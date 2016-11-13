@@ -21,6 +21,7 @@
 		80ABE3571DD838BC0014F302 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ABE3561DD838BC0014F302 /* FirstViewController.m */; };
 		80ABE35A1DD86F830014F302 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ABE3591DD86F830014F302 /* TabBarController.m */; };
 		80ABE35D1DD898540014F302 /* FireActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ABE35C1DD898540014F302 /* FireActivityIndicator.m */; };
+		80ABE3601DD8AFAF0014F302 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ABE35F1DD8AFAF0014F302 /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,8 @@
 		80ABE3591DD86F830014F302 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		80ABE35B1DD898540014F302 /* FireActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireActivityIndicator.h; sourceTree = "<group>"; };
 		80ABE35C1DD898540014F302 /* FireActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FireActivityIndicator.m; sourceTree = "<group>"; };
+		80ABE35E1DD8AFAF0014F302 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		80ABE35F1DD8AFAF0014F302 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 				80ABE3591DD86F830014F302 /* TabBarController.m */,
 				80ABE35B1DD898540014F302 /* FireActivityIndicator.h */,
 				80ABE35C1DD898540014F302 /* FireActivityIndicator.m */,
+				80ABE35E1DD8AFAF0014F302 /* ProfileViewController.h */,
+				80ABE35F1DD8AFAF0014F302 /* ProfileViewController.m */,
 			);
 			path = Boost;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 				80ABE3261DD6F57C0014F302 /* LoginViewController.m in Sources */,
 				80ABE3231DD6F57C0014F302 /* AppDelegate.m in Sources */,
 				80ABE3441DD72FCA0014F302 /* ServerProtocol.m in Sources */,
+				80ABE3601DD8AFAF0014F302 /* ProfileViewController.m in Sources */,
 				80ABE3571DD838BC0014F302 /* FirstViewController.m in Sources */,
 				80ABE3501DD7C94A0014F302 /* CharityViewController.m in Sources */,
 				80ABE3201DD6F57C0014F302 /* main.m in Sources */,
@@ -325,6 +331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JP6WHVYWBA;
 				INFOPLIST_FILE = Boost/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.deleurapps.Boost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -337,6 +344,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JP6WHVYWBA;
 				INFOPLIST_FILE = Boost/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.deleurapps.Boost;
 				PRODUCT_NAME = "$(TARGET_NAME)";

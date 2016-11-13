@@ -31,12 +31,11 @@
 @property NSString* cardExpDate;
 @end
 
-@interface Transaction : NSObject
-@property NSString* transactionid;
-@property Payment* payment;
+@interface Donation : NSObject
+@property NSString* pid;
 @property NSString* transactionDate;
-@property Charity* charity;
-@property User* user;
+@property NSString* charityName;
+@property NSNumber* amount;
 @end
 
 
@@ -62,7 +61,7 @@
 +(void) removePayment: (NSString *) paymentid;
 
 //donate
-+(void) getPastDonations;
++(void) getPastDonations: (id<ServerProtocolDelegate>)delegate;
 +(void) submitDonation: (NSNumber *) amount toCharity:(Charity *) charity delegate: (id<ServerProtocolDelegate>)delegate;
 
 @end

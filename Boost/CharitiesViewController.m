@@ -24,6 +24,7 @@
 @implementation CharitiesViewController
 
 NSMutableArray *charities;
+NSArray *searchResults;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -33,16 +34,29 @@ NSMutableArray *charities;
 	[_activityIndicator animate];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self.view endEditing:YES];
+}
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
 	// Dispose of any resources that can be recreated.
 }
 
+- (void)filterContentForSearchText:(NSString*)searchText
+{
+	if ([searchText isEqualToString:@""]){
+		searchResults = [NSArray arrayWithArray:charities];
+	}else{
+		NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
+		searchResults = [charities filteredArrayUsingPredicate:resultPredicate];
+	}
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	if (charities) {
-		return [charities count];
+	if (searchResults) {
+		return [searchResults count];
 	}else{
 		return 0;
 	}
@@ -60,7 +74,7 @@ NSMutableArray *charities;
 
 - (IBAction)openCharity:(UITapGestureRecognizer *)sender {
 	
-	[self performSegueWithIdentifier:@"openCharity" sender:[charities objectAtIndex:[[sender view] tag]]];
+	[self performSegueWithIdentifier:@"openCharity" sender:[searchResults objectAtIndex:[[sender view] tag]]];
 }
 
 - (IBAction)unwindFromCharityViewController:(UIStoryboardSegue *)sender {
@@ -69,7 +83,7 @@ NSMutableArray *charities;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"charityCell"];
-	Charity *charity = [charities objectAtIndex:indexPath.section];
+	Charity *charity = [searchResults objectAtIndex:indexPath.section];
 	[cell setTag:indexPath.section];
 	UILabel *name = [cell viewWithTag:101];
 	UILabel *shortDescription = [cell viewWithTag:102];
@@ -88,11 +102,19 @@ NSMutableArray *charities;
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
 	[searchBar resignFirstResponder];
 	searchBar.text = @"";
+	[self filterContentForSearchText:searchBar.text];
+	[_charitiesTableView reloadData];
 }
 
 -(void) searchBarSearchButtonClicked:(UISearchBar *)searchBar{
 	[searchBar resignFirstResponder];
 }
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+	[self filterContentForSearchText:searchText];
+	[_charitiesTableView reloadData];
+}
+
 
 -(void)urlRequestCompletion: (NSData*) data response: (NSURLResponse *) response error: (NSError *) error{
 	[_activityIndicator stopAnimate];
@@ -120,6 +142,7 @@ NSMutableArray *charities;
 			}];
 			[charities addObject:charity];
 		}
+		[self filterContentForSearchText:@""];
 		[_charitiesTableView reloadData];
 	}
 	

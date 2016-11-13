@@ -28,12 +28,10 @@
 
 + (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
 {
-	NSLog(@"hiiii");
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
 	[NSURLConnection sendAsynchronousRequest:request
 									   queue:[NSOperationQueue mainQueue]
 						   completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-							   NSLog(@"hellos");
 							   if ( !error )
 							   {
 								   UIImage *image = [[UIImage alloc] initWithData:data];
@@ -43,5 +41,9 @@
 								   completionBlock(NO,nil);
 							   }
 						   }];
+}
+
++(NSString *)moneyNumberFrom: (NSNumber *) num{
+	return [NSString stringWithFormat:@"%.02f", [num floatValue]];;
 }
 @end

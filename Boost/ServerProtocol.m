@@ -14,7 +14,7 @@
 @end
 @implementation Payment
 @end
-@implementation Transaction
+@implementation Donation
 @end
 
 @implementation ServerProtocol
@@ -92,7 +92,8 @@ NSString *baseUrl = @"http://ec2-35-162-210-203.us-west-2.compute.amazonaws.com/
 }
 
 //donate
-+(void) getPastDonations{
++(void) getPastDonations: (id<ServerProtocolDelegate>)delegate{
+	[self post:NULL url: [NSString stringWithFormat: @"donate/%@", user.username] HTTPMethod:@"GET" delegate: delegate];
 }
 +(void) submitDonation: (NSNumber *) amount toCharity:(Charity *) charity delegate: (id<ServerProtocolDelegate>)delegate{
 	[self post:@{@"orgid": charity.charityid, @"amount": amount, @"username": user.username} url: @"donate" HTTPMethod:@"POST" delegate: delegate];

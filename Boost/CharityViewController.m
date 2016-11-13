@@ -80,7 +80,20 @@ BOOL boostable = YES;
 	f.numberStyle = NSNumberFormatterDecimalStyle;
 	NSNumber *amount = [f numberFromString:donationStr];
 	
+	
 	[ServerProtocol submitDonation:amount toCharity:_charity delegate:self];
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+	if ([_moneyTextField.text isEqualToString:@""]){
+		_moneyTextField.text = @"1.00";
+	}
+	NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+	f.numberStyle = NSNumberFormatterDecimalStyle;
+	NSNumber *amount = [f numberFromString:_moneyTextField.text];
+	_moneyTextField.text = [Utils moneyNumberFrom: amount];
+	[self.view endEditing:YES];
+	return YES;
 }
 
 -(void)urlRequestCompletion: (NSData*) data response: (NSURLResponse *) response error: (NSError *) error{

@@ -13,4 +13,5 @@
 +(void) showSimpleAlertWithTitle: (NSString *)title message: (NSString *)message controller:(UIViewController *)controller;
 +(BOOL)isValidEmail: (NSString *)email;
 +(void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock;
++(NSString *)moneyNumberFrom: (NSNumber *) num;
 @end

@@ -10,7 +10,7 @@
 #import "ServerProtocol.h"
 #import "ServerProtocolDelegate.h"
 
-@interface CharityViewController : UIViewController <ServerProtocolDelegate>
+@interface CharityViewController : UIViewController <UITextFieldDelegate, ServerProtocolDelegate>
 @property Charity* charity;
 
 @end
